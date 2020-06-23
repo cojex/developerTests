@@ -1,4 +1,5 @@
 {
+   "NATO": {
    "A": "Alfa",
    "B": "Bravo",
    "C": "Charlie",
@@ -25,4 +26,5 @@
    "X": "X-ray",
    "Y": "Yankee",
    "Z": "Zulu"
+   }
 }
