@@ -75,24 +75,30 @@
          // I wanted to use an API because it sounds like you guys will have a lot of those.
          // To use this just make sure npm json-server is installed and 'json-server --watch search.json, the rest is ready'.
 
-         //Create API Url and declare full scoped array
-         const apiUrl = 'http://localhost:3000/NATO';
+         //Create API Url, Hardcoded obj because example only has one and declare fully scoped array
+         const apiUrl = 'http://localhost:3000/';
+         const obj = 'NATO';
          var arr = [];
 
          //Ajax in Object, Note I had to make a NATO pseudo-table in the JSON file, maybe I didn't have to but it was quicker.
          //Iterate through obj and push to arr
-         $.getJSON(apiUrl, function (data) {
-            $.each(data, function(key, val){
-               arr.push(val);
-            })
-         });
-
+         //Made fx take obj to be reusable could be associated with an action
+         function getObjVal(obj){
+            $.getJSON(`${apiUrl}${obj}`, function (data) {
+               $.each(data, function(key, val){
+                  arr.push(val);
+               })
+            });
+         };
          //JQUI the data with autocomplete
          $( function() {
             $( "#target" ).autocomplete({
                source: arr
             });
          });
+
+         // No event, runs on init - in other words the drop down is used when page loads
+         getObjVal(obj);
       </script>
    </body>
 </html>
